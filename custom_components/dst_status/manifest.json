@@ -1,7 +1,7 @@
 {
   "domain": "dst_status",
   "name": "DST Status & Date Sensors",
-  "version": "1.1.0",
+  "version": "0.0.1",
   "documentation": "https://github.com/yoely0966/HA_helpers_1",
   "dependencies": [],
   "codeowners": ["@yoely0966e"],
