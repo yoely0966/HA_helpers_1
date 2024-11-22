@@ -1,0 +1,10 @@
+{
+  "domain": "dst_status",
+  "name": "DST Status",
+  "version": "1.0.0",
+  "documentation": "https://github.com/yourusername/home-assistant-dst-status",
+  "dependencies": [],
+  "codeowners": ["@yourusername"],
+  "iot_class": "local_polling",
+  "requirements": ["pytz"]
+}
