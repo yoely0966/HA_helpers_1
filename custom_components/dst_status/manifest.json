@@ -1,10 +1,11 @@
 {
   "domain": "dst_status",
-  "name": "DST Status",
-  "version": "1.0.0",
-  "documentation": "https://github.com/yourusername/home-assistant-dst-status",
+  "name": "DST Status & Date Sensors",
+  "version": "1.1.0",
+  "documentation": "https://github.com/yoely0966/HA_helpers_1",
   "dependencies": [],
-  "codeowners": ["@yourusername"],
+  "codeowners": ["@yoely0966e"],
   "iot_class": "local_polling",
+  "integration_type": "hub",
   "requirements": ["pytz"]
 }
