@@ -1,0 +1,5 @@
+{
+  "name": "DST Status & Date Sensors",
+  "description": "Custom integration for DST status and formatted date/time sensors",
+  "render_readme": true
+}
