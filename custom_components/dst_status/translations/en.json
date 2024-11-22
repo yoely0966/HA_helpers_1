@@ -1,0 +1,13 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "DST Status Configuration",
+        "description": "Configure the DST Status sensor.",
+        "data": {
+          "name": "Name"
+        }
+      }
+    }
+  }
+}
