@@ -1,21 +1,34 @@
 from datetime import datetime
-import pytz
 from homeassistant.components.sensor import SensorEntity
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
 
-DEFAULT_NAME = "DST Status"
+DOMAIN = "dst_status"
 
-def is_dst():
-    now = datetime.now()
-    timezone = pytz.timezone("America/New_York")  # Replace with your desired timezone
-    return bool(timezone.localize(now).dst())
+SENSORS = {
+    "date": "%B %d, %Y",
+    "date_numbers": "%x",
+    "time": "%-I:%M %p",
+    "date_time": "%B %d, %Y - %-I:%M %p",
+    "week_day_long": "%A",
+    "week_day_short": "%a",
+    "week_and_date": "%a, %B %d, %Y",
+}
 
-async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    async_add_entities([DSTSensor()])
 
-class DSTSensor(SensorEntity):
-    def __init__(self):
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities):
+    """Set up DST Status sensors."""
+    sensors = [DateTimeSensor(name, fmt) for name, fmt in SENSORS.items()]
+    async_add_entities(sensors, update_before_add=True)
+
+
+class DateTimeSensor(SensorEntity):
+    """Representation of a DateTime sensor."""
+
+    def __init__(self, name, fmt):
+        self._name = name.replace("_", " ").title()
+        self._fmt = fmt
         self._state = None
-        self._name = DEFAULT_NAME
 
     @property
     def name(self):
@@ -26,4 +39,5 @@ class DSTSensor(SensorEntity):
         return self._state
 
     async def async_update(self):
-        self._state = "Yes" if is_dst() else "No"
+        """Update the sensor state."""
+        self._state = datetime.now().strftime(self._fmt)
